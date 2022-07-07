@@ -1,1 +1,21 @@
-{% extends base.html %}
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1>Play</h1>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div id="plot-spot" class="col-md-8">
+        <!-- plot gets rendered here -->
+        {{ distribution|safe }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        Answers go here
+    </div>
+</div>
+{% endblock %}

@@ -10,11 +10,13 @@ DISTRIBUTIONS = [
     normal
 ]
 
+
 def get_random_distribution():
-    return DISTRIBUTIONS[random.randint(0, len(DISTRIBUTIONS) - 1)]
+    return DISTRIBUTIONS[random.randint(0, len(DISTRIBUTIONS) - 1)](100) # Change to n
 
 
 @play.route('/play', methods=['GET'])
+@play.route('/', methods=['GET'])
 def question():
     distribution = get_random_distribution()
     return render_template('play.html', distribution=distribution)

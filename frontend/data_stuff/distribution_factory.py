@@ -8,8 +8,8 @@ DIV_ID = 'guess-me'
 
 
 def distribution_plot(data):
-    fig = ff.create_distplot([data], show_hist=False)
-    return io.to_html(fig, include_plotlyjs=False, div_id=DIV_ID)
+    fig = ff.create_distplot([data], ['A Mysterious Distribution'], show_hist=False)
+    return io.to_html(fig, include_plotlyjs=False, div_id=DIV_ID, full_html=False)
 
 
 def normal(n):

@@ -1,0 +1,4 @@
+.env/
+*/__pycache__/
+docker_commands.txt
+Pipefile*

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, session
 import random
 from data_stuff.distribution_factory import normal, normal1, normal2, normal3
 
@@ -28,11 +28,13 @@ def get_random_options(correct_option):
 @play.route('/', methods=['GET'])
 def question():
     distribution, correct_option = get_random_distribution()
+    session['correct_option'] = correct_option
     answer_options = get_random_options(correct_option)
     return render_template('play.html', distribution=distribution, answer_options=answer_options)
 
 
 def api_answer():
-    request.form.get('selected_option')
+    selected_option = request.form.get('selected_option')
+    print(selected_option)
     # Check if the answer is correct
-    pass
+    return selected_option == session.get('correct_option')

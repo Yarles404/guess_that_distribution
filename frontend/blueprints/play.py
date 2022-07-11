@@ -38,4 +38,4 @@ def api_answer():
     correct_option = session.get('correct_option')
     print(selected_option, correct_option)
     # Check if the answer is correct
-    return selected_option == session.get('correct_option')
+    return str(selected_option == correct_option)

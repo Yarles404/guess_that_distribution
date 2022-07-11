@@ -20,7 +20,7 @@
             <!-- answer_options -->
             {% for option in answer_options %}
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="selected_answer" id="{{ option }}" value="{{ option }}">
+                    <input class="form-check-input" type="radio" name="selected_option" id="{{ option }}" value="{{ option }}">
                     <label class="form-check-label" for="{{ option }}">
                         {{ option }}
                     </label>
@@ -34,14 +34,16 @@
 <script>
     // make ajax request to api/check_answer
     function check_answer() {
-        var selected_answer = $('input[name=selected_answer]:checked').val();
+        var selected_option = $('input[name=selected_option]:checked').val();
         var data = {
-            'selected_answer': selected_answer,
+            'selected_option': selected_option,
         };
+        console.log(data)
         $.ajax({
-            url: '/api/check_answer',
             type: 'POST',
+            url: '/api/check_answer',
             data: data,
+            dataType: "text",
             success: function(data) {
                 console.log(data);
             }

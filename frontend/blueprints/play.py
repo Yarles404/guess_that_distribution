@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 import random
 from data_stuff.distribution_factory import normal, normal1, normal2, normal3
 
@@ -30,3 +30,9 @@ def question():
     distribution, correct_option = get_random_distribution()
     answer_options = get_random_options(correct_option)
     return render_template('play.html', distribution=distribution, answer_options=answer_options)
+
+
+def api_answer():
+    request.form.get('selected_option')
+    # Check if the answer is correct
+    pass

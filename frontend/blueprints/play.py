@@ -32,9 +32,10 @@ def question():
     answer_options = get_random_options(correct_option)
     return render_template('play.html', distribution=distribution, answer_options=answer_options)
 
-
+@play.route('/api/check_answer', methods=['POST'])
 def api_answer():
     selected_option = request.form.get('selected_option')
-    print(selected_option)
+    correct_option = session.get('correct_option')
+    print(selected_option, correct_option)
     # Check if the answer is correct
     return selected_option == session.get('correct_option')

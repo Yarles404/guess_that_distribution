@@ -14,6 +14,15 @@ app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_USE_SIGNER'] = True
 app.config['SESSION_REDIS'] = redis.from_url(os.environ['REDIS_URL'])
 
+DB_HOST = os.environ['DB_HOST']
+DB_PORT = os.environ['DB_PORT']
+POSTGRES_PASSWORD=os.environ['POSTGRES_PASSWORD']
+POSTGRES_USER=os.environ['POSTGRES_USER']
+POSTGRES_DB=os.environ['POSTGRES_DB']
+
+connection_string = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{DB_HOST}:{DB_PORT}/{POSTGRES_DB}"
+app.config['SQLALCHEMY_DATABASE_URI'] = connection_string
+
 # PostgreSQL db
 db = SQLAlchemy(app)
 

@@ -5,18 +5,22 @@ services:
     env_file:
       - ./frontend/.env
     ports:
-     - '80:5000'
+      - '80:5000'
     depends_on:
-     - redis_db
+      - redis_db
 
   backend:
     build: ./backend/
     env_file:
       - ./backend/.env
+    environment:
+      DB_HOST: postgresql_db
     ports:
-     - '5000:5000'
+      - '5000:5000'
+    links:
+      - postgresql_db
     depends_on:
-     - postgresql_db
+      - postgresql_db
 
   redis_db:
     image: redis

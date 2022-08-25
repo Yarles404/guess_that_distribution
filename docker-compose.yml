@@ -3,7 +3,7 @@ services:
   frontend:
     build: ./frontend/
     env_file:
-      - .env
+      - ./frontend/.env
     ports:
      - '80:5000'
     depends_on:
@@ -12,7 +12,7 @@ services:
   backend:
     build: ./backend/
     env_file:
-      - .env
+      - ./backend/.env
     ports:
      - '5000:5000'
     depends_on:
